@@ -22,5 +22,7 @@ router.post("/getPoint", userCtr.getPoint);
   
 router.post("/Login",userCtr.login);
 
+// router.post ("/forgetPassword",userCtr.forgetPassword)
+
 
 module.exports = router;
