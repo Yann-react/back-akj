@@ -88,25 +88,25 @@ exports.getPoint = async (req, res, next) => {
   }
 };
 
-// exports.forgetPassword = async (req,res,next)=>{
-//   try{
-//     const searchEmail = await User.findOne({email:req.body.email})
-//     console.log(searchEmail)
-//     bcrypt
-//     .hash(req.body.password, 10)
-//     .then((hash) => {
-//     searchEmail.password = hash
-//     console.log(searchEmail)
-//     })
-//     await searchEmail.save()
-//     res.status(200).json({
-//       message:'password update'
-//     })
-//   }catch(e){
-//     console.log(e)
-//   }
+exports.forgetPassword = async (req,res,next)=>{
+  try{
+    const searchEmail = await User.findOne({email:req.body.email})
+    console.log(searchEmail)
+    bcrypt
+    .hash(req.body.password, 10)
+    .then((hash) => {
+    searchEmail.password = hash
+    console.log(searchEmail)
+    searchEmail.save()
+  })
+    res.status(200).json({
+      message:'password update'
+    })
+  }catch(e){
+    console.log(e)
+  }
 
-// }
+}
 
 exports.login = (req, res, next) => {
   User.findOne({ email: req.body.email })
