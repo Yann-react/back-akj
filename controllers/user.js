@@ -21,6 +21,9 @@ exports.createUser = (req, res, next) => {
         .then(() =>
           res.status(201).json({
             message: "Utilisateur créé !",
+            email: user.email,
+            titre: user.titre,
+            userId: user._id,
             token: jwt.sign(
               { userId: user._id, email: user.email },
               "RANDOM_TOKEN_SECRET",
